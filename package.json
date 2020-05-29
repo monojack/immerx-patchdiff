@@ -1,7 +1,7 @@
 {
-  "name": "immerx-patchdiff",
+  "name": "@immerx/patchdiff",
   "version": "0.1.0",
-  "description": "Patch diffing for Immerx",
+  "description": "Immer patch diffing",
   "main": "cjs/index.js",
   "module": "esm/index.js",
   "scripts": {
@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/monojack/immerx-patchdiff",
   "bugs": "https://github.com/monojack/immerx-patchdiff/issues",
-  "npmName": "immerx-patchdiff",
   "files": [
     "esm",
     "cjs"
