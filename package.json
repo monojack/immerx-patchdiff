@@ -1,6 +1,6 @@
 {
   "name": "@immerx/patchdiff",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Immer patch diffing",
   "main": "cjs/index.js",
   "module": "esm/index.js",
