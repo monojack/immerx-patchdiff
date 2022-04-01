@@ -75,6 +75,6 @@
     "write-pkg": "^4.0.0"
   },
   "peerDependencies": {
-    "immer": ">= 6.0.0"
+    "immer": ">= 6.0.0 < 7"
   }
 }
