@@ -1,6 +1,6 @@
-import { objectOf } from './objectOf'
+import { objectOf } from './objectOf.mjs'
 
-import { diff as Symbol_diff } from './symbols'
+import { diff as Symbol_diff } from './symbols.mjs'
 
 function set(path) {
   return value => {
@@ -26,11 +26,16 @@ function get([head, ...rest]) {
   }
 }
 
-export function diff(patches) {
+export function diff(patchOrPatches) {
   return prevState => {
-    if (!Array.isArray(patches) || patches.length === 0) {
-      return
-    }
+    if (!patchOrPatches || typeof patchOrPatches !== 'object') return
+
+    const patches = Array.isArray(patchOrPatches)
+      ? patchOrPatches
+      : [patchOrPatches]
+    if (patches.length === 0) return
+
+    const shouldReturnList = Array.isArray(patchOrPatches)
 
     if (patches.length === 1 && patches[0].path.length === 0) {
       // replace entire state tree
@@ -41,12 +46,11 @@ export function diff(patches) {
           return v
         },
       })
-
-      return v
+      return shouldReturnList ? [v] : v
     }
 
     return (function () {
-      let draft
+      const diffs = []
 
       for (const patch of patches) {
         const v =
@@ -62,10 +66,10 @@ export function diff(patches) {
           },
         })
 
-        draft = set(patch.path)(v)(draft)
+        diffs.push(set(patch.path)(v)())
       }
 
-      return draft
+      return diffs.length === 1 && !shouldReturnList ? diffs[0] : diffs
     })()
   }
 }

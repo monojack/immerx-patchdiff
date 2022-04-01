@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { objectOf } from '../src/objectOf'
+import { objectOf } from '../src/objectOf.mjs'
 
 test('builds nested objects', t => {
   const res = objectOf(['foo', 'bar', 'baz'])(2)

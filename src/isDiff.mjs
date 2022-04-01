@@ -1,4 +1,4 @@
-import { diff as Symbol_diff } from './symbols'
+import { diff as Symbol_diff } from './symbols.mjs'
 
 export function isDiff(v) {
   return (
